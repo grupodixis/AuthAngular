@@ -12,31 +12,28 @@ import { Router } from '@angular/router';
 })
 export class authInterceptor implements HttpInterceptor {
   
-  constructor(private router:Router){}
+  constructor(public router:Router){}
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     
     console.log('http interceptada');
-    const headers = new HttpHeaders(
-      {Authorization : 'bearer '+ localStorage.getItem('token')}
-      )
-      const reqClone = req.clone({
-        headers
-      })
-      
-      
-      return next.handle(reqClone).pipe(
-        catchError(this.manejarErrores)
+    const hd = {Authorization : 'bearer '+ localStorage.getItem('token')}
+    const headers = new HttpHeaders(hd)
+      const reqClone = req.clone({headers})
+      return next.handle(reqClone)
+        .pipe(
+          catchError((err) => {
+            console.log('error caught in service')
+            console.error(err);
+            this.router.navigate(['/login'])
+            //Handle the error here
+            
+            return throwError(err);    //Rethrow it back to component
+          }) 
+          
+          )
+          
+        }
         
-        )
-        
-      }
-      
-      
-      manejarErrores(err:HttpErrorResponse){
-        console.log('Ocurrio un error');
-        console.log('Se ha registrado en el Log');
-        console.warn(err);
-        return throwError('Error personalizado') 
-  }
+     
 
 }
