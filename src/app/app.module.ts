@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app.routing';
 //Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './shared/login/login.component';
-import { LogoutComponent } from './login/logout/logout.component';
+import { LogoutComponent } from './shared/logout/logout.component';
 
 
 @NgModule({
