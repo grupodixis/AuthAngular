@@ -31,14 +31,4 @@ export class AuthService {
   }
 
 
-   role( route: ActivatedRouteSnapshot){
-     
-    const userRole = this.userInfo().user.role.id
-        if (route.data.role && route.data.role.indexOf(userRole) === -1) {
-          //this.router.navigate(['/home']);
-          return false;
-        }
-        return true;
-  } 
-
 }

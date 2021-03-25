@@ -11,13 +11,20 @@ import { ListaComponent } from './partes/lista/lista.component';
 
 const routes: Routes = [
     
-    { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-    { path: 'partes', component: PartesComponent,  canActivate:[AuthGuard],
+    {   path: 'home', 
+        component: HomeComponent, 
+        canActivate:[AuthGuard],
+        data:{role:"Operario,Encargado"}
+    },
+    {   path: 'partes', 
+        component: PartesComponent,  
+        canActivate:[AuthGuard],
+        data:{role:"Operario,Encargado"},
         children:[
-                    {path:'nuevo', component:NuevoComponent,  canActivate:[AuthGuard]},
-                    {path:'lista', component:ListaComponent,  canActivate:[AuthGuard],data:{role:5}},    
+                    {path:'nuevo', component:NuevoComponent,  canActivate:[AuthGuard],data:{role:"Operario,Encargado"}},
+                    {path:'lista', component:ListaComponent,  canActivate:[AuthGuard],data:{role:"Encargado"}},    
 
-                ]
+                ],
     }
     
 
