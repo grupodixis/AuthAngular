@@ -5,6 +5,7 @@ import { HomeComponent } from '../logged/home/home.component';
 import { PartesComponent } from './partes/partes.component';
 import { NuevoComponent } from './partes/nuevo/nuevo.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { ListaComponent } from './partes/lista/lista.component';
 
 
 
@@ -13,7 +14,9 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
     { path: 'partes', component: PartesComponent,  canActivate:[AuthGuard],
         children:[
-                    {path:'nuevo', component:NuevoComponent,  canActivate:[AuthGuard]}    
+                    {path:'nuevo', component:NuevoComponent,  canActivate:[AuthGuard]},
+                    {path:'lista', component:ListaComponent,  canActivate:[AuthGuard],data:{role:5}},    
+
                 ]
     }
     

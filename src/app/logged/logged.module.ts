@@ -6,9 +6,10 @@ import { HomeComponent } from './home/home.component';
 import { LoggedRoutingModule } from './logged.routing';
 import { PartesComponent } from './partes/partes.component';
 import { NuevoComponent } from './partes/nuevo/nuevo.component';
+import { ListaComponent } from './partes/lista/lista.component';
 
 @NgModule({
-    declarations: [HomeComponent, PartesComponent, NuevoComponent],
+    declarations: [HomeComponent, PartesComponent, NuevoComponent, ListaComponent],
     imports: [ CommonModule,LoggedRoutingModule ],
     exports: [],
     providers: [{
